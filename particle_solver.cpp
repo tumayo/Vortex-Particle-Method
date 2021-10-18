@@ -190,30 +190,12 @@ static void draw_Panel(void)
         // position i end
         glVertex2f(panels[i].end_pos.x, panels[i].end_pos.y);
     }
-    glEnd();
-
-    // // normal
-    // glLineWidth(1.0);
-    // glBegin(GL_LINES);
-    // for (int i = 0; i < N_panels; i++) {
-    //     glColor3f(1.0, 1.0, 1.0);
-    //     // position
-    //     glVertex2f(panels[i].mid_pos.x, panels[i].mid_pos.y);
-    //     // normal
-    //     glVertex2f(dx_panels*panels[i].normal.x + panels[i].mid_pos.x, 
-    //             dx_panels*panels[i].normal.y + panels[i].mid_pos.y);
-    // }
-    // glEnd();
+    glEnd();   
 
     // mid_pos
     glPointSize(8.0);
     glBegin(GL_POINTS);
     for (int i = 0; i < N_panels; i++) {
-        // if (cache_panels_gamma[i] > 0.0f) {
-        //     glColor3f( 1.0f, 0.0f, 0.0f);
-        // } else {
-        //     glColor3f( 0.0f, 0.0f, 1.0f);
-        // }
         if (panels[i].gamma > 0.0f) {
             glColor3f(panels[i].gamma * 1.0f, 0.0f, 0.0f);
         }
@@ -223,27 +205,7 @@ static void draw_Panel(void)
         // glColor3f(0.0, 1.0, 0.0);
         glVertex2f(panels[i].mid_pos.x, panels[i].mid_pos.y);
     }
-    glEnd();
-
-    // glPointSize(12.0);
-    // glBegin(GL_POINTS);
-    // for (int i = 0; i < N_panels; i++) {
-    //     // start
-    //     glColor3f(0.1, 0.1, 0.1);
-    //     glVertex2f(panels[i].start_pos.x, panels[i].start_pos.y);
-    // }
-    // glEnd();
-
-    // glPointSize(8.0);
-    // glBegin(GL_POINTS);
-    // for (int i = 0; i < N_panels; i++) {
-    //     // end
-    //     glColor3f(0.66,0.66,0.66);
-    //     glVertex2f(panels[i].end_pos.x, panels[i].end_pos.y);
-    // }
-    // glEnd();
-
-
+    glEnd();   
 }
 
 /*
@@ -465,10 +427,7 @@ void update_pos_particles() {
         // Adam-Bashforth 2nd order
         particles[i].pos += (particles[i].vel * 1.5f - particles[i].vel_old * 0.5f) * dt;
         particles[i].vel_old = particles[i].vel;
-
-        // if (cache_particles_pos_particles_x[i] < 0.0 || cache_particles_pos_particles_x[i] >= 1.0 || cache_particles_pos_particles_y[i] < 0.0 || cache_particles_pos_particles_y[i] >= 1.0) {
-        //     particles[i].gamma = 0.0f;
-        // }
+       
     }
 }
 
